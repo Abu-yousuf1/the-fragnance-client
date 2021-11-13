@@ -41,6 +41,7 @@ const Login = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" name="password" onBlur={handleBlur} placeholder="Password" />
                     </Form.Group>
+
                     <Button variant="primary" type="submit">
                         Submit
                     </Button>
@@ -48,6 +49,7 @@ const Login = () => {
                 <h5 className="mt-3">Don't have an account?Please <Link to="/register">sign up</Link>.</h5>
 
             </div>
+
             {/* </div> */}
 
             <Footer />

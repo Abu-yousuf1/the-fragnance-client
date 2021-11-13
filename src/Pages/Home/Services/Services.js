@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Zoom from 'react-reveal/Zoom';
 import { Card, Col, Row } from 'react-bootstrap';
-import Banner from '../../../Images/banner1.jpg';
 import { Link } from 'react-router-dom';
 
 
@@ -10,7 +9,7 @@ const Services = () => {
     const [services, setServices] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://sheltered-plateau-57228.herokuapp.com/services')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])

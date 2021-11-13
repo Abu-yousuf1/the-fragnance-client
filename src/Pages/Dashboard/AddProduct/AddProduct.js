@@ -1,13 +1,16 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
+import swal from 'sweetalert';
+import { useHistory } from 'react-router-dom';
 
 const AddProduct = () => {
     const [product, setProduct] = useState({})
+    const history = useHistory();
     const handleSubmit = e => {
         e.preventDefault();
 
-        fetch('http://localhost:5000/product', {
+        fetch('https://sheltered-plateau-57228.herokuapp.com/product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -15,9 +18,13 @@ const AddProduct = () => {
             body: JSON.stringify(product)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if (data.insertedId) {
+                    swal("Good job!", "Congratulations you successfully submitted!", "success");
+                    history.replace('/dashboard')
+                }
+            })
     }
-    console.log(product);
     const handleBlur = e => {
         const field = e.target.name;
         const value = e.target.value;

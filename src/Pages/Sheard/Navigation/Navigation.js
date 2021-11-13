@@ -15,7 +15,7 @@ const Navigation = () => {
                         <Nav.Link as={Link} to='/home'>Home</Nav.Link>
                         <Nav.Link as={Link} to='/products'>Products</Nav.Link>
 
-                        <Nav.Link as={Link} to='/dashboard'>Dashboard</Nav.Link>
+                        {user?.email && <Nav.Link as={Link} to='/dashboard'>Dashboard</Nav.Link>}
                         {
                             user?.email ? <button className="btn" onClick={logout}>Log out</button>
                                 :

@@ -14,15 +14,14 @@ import { useState } from 'react';
 const MyOrders = () => {
     const { user } = useAuth();
     const [orderList, setOrderList] = useState([])
-    console.log("myOrder", orderList);
+
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?email=${user.email}`)
+        fetch(`https://sheltered-plateau-57228.herokuapp.com/orders?email=${user.email}`)
             .then(res => res.json())
             .then(data => setOrderList(data))
-    }, [])
+    }, [user.email])
 
     const handleDelete = (id) => {
-        console.log(id);
 
         swal({
             title: "Are you sure?",
@@ -36,7 +35,7 @@ const MyOrders = () => {
                     swal("Poof! Your imaginary file has been deleted!", {
                         icon: "success",
                     });
-                    fetch(`http://localhost:5000/orders/${id}`, {
+                    fetch(`https://sheltered-plateau-57228.herokuapp.com/orders/${id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())

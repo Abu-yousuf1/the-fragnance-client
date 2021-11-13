@@ -1,24 +1,22 @@
 import { CircularProgress } from '@mui/material';
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Footer from '../../Sheard/Footer/Footer';
 import Navigation from '../../Sheard/Navigation/Navigation';
 import useAuth from './../../../hooks/useAuth/useAuth';
 
 
 const Registration = () => {
-    const { isLoading, user } = useAuth();
+    const { isLoading } = useAuth();
     const [registerData, setRegisterData] = useState({})
     const { registration } = useAuth();
-    const location = useLocation()
     const history = useHistory();
     const handleSubmit = (e) => {
         e.preventDefault();
 
         registration(registerData.email, registerData.password, registerData.name, history)
     }
-    console.log(registerData.email);
     const handleOnBlur = (e) => {
         const field = e.target.name;
         const value = e.target.value;
@@ -29,7 +27,6 @@ const Registration = () => {
     return (
         <div>
             <Navigation />
-            {/* <div className=""> */}
             <div className="w-75 mx-auto">
                 <h3 className="my-5 text-center">Please registration</h3>
 
@@ -58,10 +55,8 @@ const Registration = () => {
                     </Button>
                 </Form>}
                 {
-                    isLoading && <CircularProgress />
+                    isLoading && <CircularProgress sx={{ justifyContent: 'center' }} />
                 }
-
-
 
                 <h5 className="mt-3">Already have an account?Please <Link to="/register">sign in</Link>.</h5>
             </div>

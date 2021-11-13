@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import Rating from 'react-rating';
 import Bounce from 'react-reveal/Bounce';
-import Banner from '../../../Images/banner2.jpg'
 import { useEffect } from 'react';
 
 const Review = () => {
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://sheltered-plateau-57228.herokuapp.com/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])

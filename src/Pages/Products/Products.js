@@ -3,7 +3,6 @@ import { Card, Col, Row } from 'react-bootstrap';
 import Footer from '../Sheard/Footer/Footer';
 import Navigation from '../Sheard/Navigation/Navigation';
 import Zoom from 'react-reveal/Zoom';
-import Banner10 from '../../Images/banner1.jpg';
 import { Link } from 'react-router-dom';
 
 
@@ -11,7 +10,7 @@ const Products = () => {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://sheltered-plateau-57228.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])

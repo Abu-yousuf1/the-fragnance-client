@@ -7,12 +7,11 @@ import swal from 'sweetalert';
 const MakeAdmin = () => {
     const [admin, setAdmin] = useState({})
 
-    console.log(admin);
     const handleSubmit = e => {
         e.preventDefault();
         const user = { email: admin }
-        console.log(user);
-        fetch('http://localhost:5000/users', {
+
+        fetch('https://sheltered-plateau-57228.herokuapp.com/users', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

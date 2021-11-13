@@ -11,7 +11,6 @@ const Review = () => {
     const { user } = useAuth();
 
     const handleSubmit = e => {
-        console.log(user);
         const displayName = user.displayName;
         const email = user.email;
         const image = user.photoURL;
@@ -23,9 +22,8 @@ const Review = () => {
             ...review,
             rating
         }
-        console.log(userReview);
 
-        fetch('http://localhost:5000/review', {
+        fetch('https://sheltered-plateau-57228.herokuapp.com/review', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -34,14 +32,12 @@ const Review = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log("customer", data.insertedId, data);
                 if (data.insertedId) {
                     swal("Good job!", "Successfully review submitted!", "success");
                 }
             })
 
     }
-    console.log(review);
     const handleBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
@@ -50,8 +46,6 @@ const Review = () => {
         setReview(newReview)
     }
 
-
-    console.log(rating);
     return (
         <div>
             <h4 className="mb-5">Write a Review</h4>

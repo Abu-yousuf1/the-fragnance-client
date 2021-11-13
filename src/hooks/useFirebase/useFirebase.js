@@ -13,7 +13,6 @@ const useFirebase = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [isAdmin, setIsAdmin] = useState(false)
 
-    console.log(isAdmin);
     const auth = getAuth();
 
     const registration = (email, password, name, history) => {
@@ -103,15 +102,17 @@ const useFirebase = () => {
             }
             setIsLoading(false)
         });
-        // return () => unsubscribe;
-    }, [])
+    }, [auth])
 
-
+    // error handling................
+    if (err) {
+        swal("An error Occurred!", err, "error")
+    }
 
     // pass user information in database.......... 
     const saveUser = (name, email) => {
         const user = { name, email }
-        fetch('http://localhost:5000/user', {
+        fetch('https://sheltered-plateau-57228.herokuapp.com/user', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -124,7 +125,7 @@ const useFirebase = () => {
 
     // admin verification.........
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://sheltered-plateau-57228.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setIsAdmin(data.admin))
     }, [user.email])

@@ -17,11 +17,11 @@ const PlaceOrder = () => {
 
     const history = useHistory();
     useEffect(() => {
-        fetch(`http://localhost:5000/service/${id}`)
+        fetch(`https://sheltered-plateau-57228.herokuapp.com/service/${id}`)
             .then(res => res.json())
             .then(data => setService(data))
-    }, [])
-    console.log(service);
+    }, [id])
+
     const status = "pending"
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -34,7 +34,7 @@ const PlaceOrder = () => {
 
 
 
-        fetch('http://localhost:5000/order', {
+        fetch('https://sheltered-plateau-57228.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

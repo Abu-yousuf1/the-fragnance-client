@@ -6,7 +6,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import useAuth from './../../../hooks/useAuth/useAuth';
 import swal from 'sweetalert';
 import { useEffect, useState } from 'react';
 
@@ -18,7 +17,6 @@ const ManageAllOrders = () => {
 
 
     const handleDelete = (id) => {
-        console.log(id);
 
         swal({
             title: "Are you sure?",
@@ -32,7 +30,7 @@ const ManageAllOrders = () => {
                     swal("Poof! Your imaginary file has been deleted!", {
                         icon: "success",
                     });
-                    fetch(`http://localhost:5000/orders/${id}`, {
+                    fetch(`https://sheltered-plateau-57228.herokuapp.com/orders/${id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
@@ -54,22 +52,23 @@ const ManageAllOrders = () => {
 
     const handleStatus = (id) => {
 
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://sheltered-plateau-57228.herokuapp.com/order/${id}`, {
             method: "PUT"
         })
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-
-                    // let remainingStatus = orders.filter(pd => pd._id === id)
-                    // remainingStatus = "Already Shipped"
+                    orders.filter(pd => pd._id !== id)
+                    fetch('https://sheltered-plateau-57228.herokuapp.com/allorders')
+                        .then(res => res.json())
+                        .then(data => setOrders(data))
 
                 }
             })
     }
 
     useEffect(() => {
-        fetch('http://localhost:5000/allorders')
+        fetch('https://sheltered-plateau-57228.herokuapp.com/allorders')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
