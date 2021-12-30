@@ -3,10 +3,11 @@ import { useParams } from 'react-router';
 import Footer from '../Sheard/Footer/Footer';
 import Navigation from '../Sheard/Navigation/Navigation';
 import { useEffect } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Card } from 'react-bootstrap';
 import useAuth from './../../hooks/useAuth/useAuth';
 import swal from 'sweetalert';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { Typography } from '@mui/material';
 
 const PlaceOrder = () => {
     const { user } = useAuth()
@@ -14,7 +15,7 @@ const PlaceOrder = () => {
     const initialUser = { name: user.displayName, email: user.email, phone: '' }
     const [service, setService] = useState({})
     const [userData, setUserData] = useState(initialUser)
-
+    console.log('product1', service)
     const history = useHistory();
     useEffect(() => {
         fetch(`https://sheltered-plateau-57228.herokuapp.com/service/${id}`)
@@ -61,9 +62,22 @@ const PlaceOrder = () => {
     return (
         <div>
             <Navigation />
-            <div>
-                <div className="w-75 mx-auto">
-                    <h3 className="my-5 text-center">Place Order</h3>
+            <Typography variant="h5" sx={{ fontWeight: 'bold' }} className="primary-color text-center my-5">Place Order</Typography>
+            <div className='row '>
+                <div className="col-lg-6 ">
+                    <Card style={{ width: '50%', height: '80%' }} className="border-0 text-center mx-auto">
+                        <Card.Img variant="top" src={service.image} />
+                        <Card.Body>
+                            <Card.Title className="primary-color">{service.name}</Card.Title>
+                            <Card.Text className="text-warning fs-4 ">Price: ${service.price}</Card.Text>
+                            <Card.Text className="text-muted">
+                                {service.description}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </div>
+                <div className="col-lg-6  p-4">
+
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="formBasicName">
                             <Form.Label>User name</Form.Label>

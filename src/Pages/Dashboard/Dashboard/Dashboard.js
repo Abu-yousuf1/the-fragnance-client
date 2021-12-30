@@ -54,18 +54,20 @@ function Dashboard(props) {
                 </Box>
                 <Divider />
                 <Nav.Link as={Link} to='/home'>Home</Nav.Link>
-                <Nav.Link as={Link} to={`${url}`}>My Orders</Nav.Link>
-                <Nav.Link as={Link} to={`${url}/review`}>Review</Nav.Link>
 
-                {isAdmin && <Box>
+                {isAdmin ? <Box styloe={{ fontWeight: 'bold' }}>
                     <Nav.Link as={Link} to={`${url}/ManageAllOrders`}> Manage All Orders</Nav.Link>
                     <Nav.Link as={Link} to={`${url}/ManageProducts`}> Manage Products</Nav.Link>
                     <Nav.Link as={Link} to={`${url}/addProduct`}>Add Product</Nav.Link>
                     <Nav.Link as={Link} to={`${url}/makeAdmin`}>Make Admin</Nav.Link>
                 </Box>
+                    : <Box >
+                        <Nav.Link as={Link} to={`${url}`}>My Orders</Nav.Link>
+                        <Nav.Link as={Link} to={`${url}/review`}>Review</Nav.Link>
+                    </Box>
                 }
 
-                <Nav.Link as={Link} to={`${url}/Pay`}>Pay</Nav.Link>
+                {/* <Nav.Link as={Link} to={`${url}/Pay`}>Pay</Nav.Link> */}
                 <Nav.Link onClick={logout}>Log Out</Nav.Link>
 
             </List>
@@ -94,7 +96,7 @@ function Dashboard(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
+                    <Typography variant="h6" style={{ textAlign: 'center' }} noWrap component="div">
                         Dashboard
                     </Typography>
                 </Toolbar>

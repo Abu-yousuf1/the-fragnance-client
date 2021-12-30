@@ -10,7 +10,7 @@ const Navigation = () => {
         <Navbar collapseOnSelect expand="lg" bg="light" className='py-3' variant="light">
             <Container>
 
-                <Navbar.Brand as={Link} to='/home' className="fs-4 fw-bold logo" style={{ color: '#A05F43' }} >The Fragrance Family</Navbar.Brand>
+                <Navbar.Brand as={Link} to='/home' className="fs-5 fw-bold logo" style={{ color: '#A05F43' }} >The Fragrance Family</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="ms-auto fw-bold">
@@ -28,7 +28,7 @@ const Navigation = () => {
                     </Nav>
                     <Nav className="fw-bold">
                         {
-                            user.email && <Nav.Link > {user.displayName}</Nav.Link>
+                            user.email && <Nav.Link style={{ color: '#A05F43' }} > {user.displayName.toUpperCase()}</Nav.Link>
                         }
                     </Nav>
                 </Navbar.Collapse>

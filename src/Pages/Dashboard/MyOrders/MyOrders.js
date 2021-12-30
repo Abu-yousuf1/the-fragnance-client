@@ -10,6 +10,7 @@ import useAuth from './../../../hooks/useAuth/useAuth';
 import swal from 'sweetalert';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { Typography } from '@mui/material';
 
 const MyOrders = () => {
     const { user } = useAuth();
@@ -56,6 +57,7 @@ const MyOrders = () => {
 
     return (
         <TableContainer component={Paper}>
+            <Typography variant="h5" sx={{ fontWeight: 'bold' }} className="primary-color text-center mb-5">Manage all Product</Typography>
             <Table sx={{}} aria-label="simple table">
                 <TableHead>
                     <TableRow >

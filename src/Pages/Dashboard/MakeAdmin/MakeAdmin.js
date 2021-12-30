@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import swal from 'sweetalert';
+import { Typography } from '@mui/material';
 
 
 const MakeAdmin = () => {
@@ -31,8 +32,7 @@ const MakeAdmin = () => {
     }
     return (
         <div>
-            <h1>Make admin</h1>
-
+            <Typography variant="h5" sx={{ fontWeight: 'bold' }} className="primary-color text-center mb-5">Make Admin</Typography>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3 w-75" controlId="formBasicEmail" >
                     <Form.Label>Email address</Form.Label>

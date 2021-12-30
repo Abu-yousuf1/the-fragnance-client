@@ -1,10 +1,11 @@
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import Footer from '../../Sheard/Footer/Footer';
 import Navigation from '../../Sheard/Navigation/Navigation';
 import useAuth from './../../../hooks/useAuth/useAuth';
+import image from '../../../Images/login.jpg'
 
 
 const Registration = () => {
@@ -27,38 +28,42 @@ const Registration = () => {
     return (
         <div>
             <Navigation />
-            <div className="w-75 mx-auto">
-                <h3 className="my-5 text-center">Please registration</h3>
+            <Typography variant="h5" sx={{ fontWeight: 'bold' }} className="primary-color text-center mb-5">Please registration</Typography>
+            <div className="row ">
 
-                {!isLoading && <Form onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3" controlId="formBasicName">
-                        <Form.Label>User name</Form.Label>
-                        <Form.Control type="text" name="name" onBlur={handleOnBlur} placeholder="Enter your Name" />
-                        <Form.Text className="text-muted">
-                            Please write your user name.
-                        </Form.Text>
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" name="email" onBlur={handleOnBlur} placeholder="Enter email" />
-                        <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
-                        </Form.Text>
-                    </Form.Group>
+                <div className="col-lg-6 d-none d-lg-block">
+                    <img className="img-fluid" style={{ height: '80%' }} src={image} alt="" />
+                </div>
 
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" name="password" onBlur={handleOnBlur} placeholder="Password" />
-                    </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
-                </Form>}
-                {
-                    isLoading && <CircularProgress sx={{ justifyContent: 'center' }} />
-                }
+                <div className='col-lg-6'>
+                    {!isLoading && <Form onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3" controlId="formBasicName">
+                            <Form.Label>User name</Form.Label>
+                            <Form.Control type="text" name="name" onBlur={handleOnBlur} placeholder="Enter your Name" />
 
-                <h5 className="mt-3">Already have an account?Please <Link to="/register">sign in</Link>.</h5>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email" name="email" onBlur={handleOnBlur} placeholder="Enter email" />
+
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" name="password" onBlur={handleOnBlur} placeholder="Password" />
+                        </Form.Group>
+                        <Button variant="primary" type="submit">
+                            Submit
+                        </Button>
+                    </Form>}
+                    {
+                        isLoading && <CircularProgress sx={{ justifyContent: 'center' }} />
+                    }
+
+                    <h6 className="mt-5">Already have an account?Please <Link to="/login">sign in</Link>.</h6>
+
+                </div>
+
             </div>
 
             <Footer />

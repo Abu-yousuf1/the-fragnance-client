@@ -3,6 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import swal from 'sweetalert';
 import { useHistory } from 'react-router-dom';
+import { Typography } from '@mui/material';
 
 const AddProduct = () => {
     const [product, setProduct] = useState({})
@@ -35,7 +36,8 @@ const AddProduct = () => {
 
     return (
         <div>
-            <h4 className="primary-color text-center">Add a product</h4>
+
+            <Typography variant="h5" sx={{ fontWeight: 'bold' }} className="primary-color text-center mb-5">Add a product</Typography>
 
             <div className="w-75 mt-5 mx-auto">
 
@@ -72,8 +74,6 @@ const AddProduct = () => {
                             Please write your product Description.
                         </Form.Text>
                     </Form.Group>
-
-
 
                     <Button variant="primary" type="submit">
                         Submit

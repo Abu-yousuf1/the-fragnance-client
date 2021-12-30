@@ -27,7 +27,7 @@ const Products = () => {
                         <Col key={product._id}>
                             <Zoom>
                                 <Card className="border-0 text-center">
-                                    <Card.Img variant="top" src={product.image} />
+                                    <Card.Img className="img-fluid" variant="top" src={product.image} />
                                     <Card.Body>
                                         <Card.Title className="primary-color">{product.name}</Card.Title>
                                         <Card.Text className="text-warning fs-4 ">Price: ${product.price}</Card.Text>

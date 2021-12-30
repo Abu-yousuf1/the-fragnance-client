@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import swal from 'sweetalert';
 import { useEffect, useState } from 'react';
+import { Typography } from '@mui/material';
 
 
 
@@ -74,7 +75,7 @@ const ManageAllOrders = () => {
     }, [])
     return (
         <div>
-
+            <Typography variant="h5" className="primary-color" sx={{ textAlign: 'center', fontWeight: 'bold', marginY: '15px' }}> Mange AlL Orders</Typography>
             <TableContainer component={Paper}>
                 <Table sx={{}} aria-label="simple table">
                     <TableHead>

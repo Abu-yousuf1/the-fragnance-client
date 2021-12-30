@@ -1,4 +1,5 @@
 
+import { Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import Zoom from 'react-reveal/Zoom';
@@ -53,7 +54,7 @@ const ManageProducts = () => {
         <div>
             <div className="container mt-5 ">
                 <div>
-                    <h1 className="primary-color text-center mb-5">Manage all Product</h1>
+                    <Typography variant="h5" sx={{ fontWeight: 'bold' }} className="primary-color text-center mb-5">Manage all Product</Typography>
                 </div>
 
                 <Row xs={1} md={3} className="g-5">
