@@ -56,7 +56,7 @@ function Dashboard(props) {
                 <Nav.Link as={Link} to='/home'>Home</Nav.Link>
 
                 {isAdmin ? <Box styloe={{ fontWeight: 'bold' }}>
-                    <Nav.Link as={Link} to={`${url}/ManageAllOrders`}> Manage All Orders</Nav.Link>
+                    <Nav.Link as={Link} to={`${url}`}> Manage All Orders</Nav.Link>
                     <Nav.Link as={Link} to={`${url}/ManageProducts`}> Manage Products</Nav.Link>
                     <Nav.Link as={Link} to={`${url}/addProduct`}>Add Product</Nav.Link>
                     <Nav.Link as={Link} to={`${url}/makeAdmin`}>Make Admin</Nav.Link>
@@ -141,15 +141,20 @@ function Dashboard(props) {
                 <Toolbar />
 
                 <Switch>
-                    <Route exact path={path}>
-                        <MyOrders />
-                    </Route>
+                    {
+                        isAdmin ? <AdminRoute exact path={`${path}`}>
+                            <ManageAllOrders />
+                        </AdminRoute>
+                            : <Route exact path={path}>
+                                <MyOrders />
+                            </Route>
+
+                    }
+
                     <Route exact path={`${path}/review`}>
                         <Review />
                     </Route>
-                    <AdminRoute exact path={`${path}/ManageAllOrders`}>
-                        <ManageAllOrders />
-                    </AdminRoute>
+
                     <AdminRoute exact path={`${path}/ManageProducts`}>
                         <ManageProducts />
                     </AdminRoute>
