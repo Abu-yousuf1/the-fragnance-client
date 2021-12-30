@@ -16,7 +16,7 @@ const Services = () => {
     return (
         <div className="container mt-5 ">
             <div>
-                <h1 className="primary-color text-center mb-5">Our Perfume Product</h1>
+                <h3 className="primary-color text-center " style={{ margin: '160px 0 100px 0' }}>OUR PERFUME PRODUCT</h3>
             </div>
 
             <Row xs={1} md={3} className="g-5">

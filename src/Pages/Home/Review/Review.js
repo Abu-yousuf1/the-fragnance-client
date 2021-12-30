@@ -15,8 +15,8 @@ const Review = () => {
 
     return (
         <div className="container mt-5 ">
-            <div>
-                <h1 className="primary-color text-center my-5">Customer Review</h1>
+            <div style={{ margin: '160px 0 100px 0' }}>
+                <h3 className="primary-color text-center my-5" >CUSTOMER REVIEW</h3>
             </div>
 
             <Row xs={1} md={3} className="g-5">
